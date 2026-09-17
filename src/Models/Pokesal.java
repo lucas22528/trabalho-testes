@@ -120,5 +120,9 @@ public abstract class Pokesal {
         } return Math.random() < StatusEfeito.CHANCE_FALHA;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s [%s] HP:%d/%d ATK:%d DEF:%d SPD:%d Status:%s", nome, tipo, hpAtual, hpMaximo,atkAtual, defBase, spdAtual, status);
+    }
 
 }
