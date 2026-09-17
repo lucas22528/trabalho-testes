@@ -68,5 +68,14 @@ public abstract class Pokesal {
         return hpAtual > 0;
     }
 
+    public void aplicarStatus(final StatusEfeito novoStatus) {
+        this.status = novoStatus;
+        this.turnoComStatus = 0;
+        if(novoStatus == StatusEfeito.QUEIMADO){
+            this.atkAtual = (int) Math.round(atkBase * (1.0 - StatusEfeito.REDUCAO_ATK_QUEIMADURA));
+        }else if (novoStatus == StatusEfeito.PARALISADO){
+            this.spdAtual = (int) Math.round(spdBase * (1.0 - StatusEfeito.REDUCAO_SPD_PARALISA));
+        }
+    }
 
 }
