@@ -93,6 +93,15 @@ public abstract class Pokesal {
         this.hpAtual = Math.min(hpMaximo, this.hpAtual + cura);
     }
 
-
-
-}
+    public void aplicarEfeitoStatusFimTurno(){
+        if(status == StatusEfeito.NENHUM || !estaVivo()){
+            return;
+        } turnoComStatus++;
+        if (status == StatusEfeito.QUEIMADO){
+            final int dano = (int) Math.round(hpMaximo * StatusEfeito.DANO_QUEIMADURA);
+            receberDano(dano);
+        } else if (status == StatusEfeito.ENVENENADO) {
+            final int dano = (int) Math.round(hpMaximo * StatusEfeito.DANO_VENENO * turnoComStatus):
+            receberDano(dano);
+        }
+    }
