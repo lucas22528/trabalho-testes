@@ -71,9 +71,9 @@ public abstract class Pokesal {
     public void aplicarStatus(final StatusEfeito novoStatus) {
         this.status = novoStatus;
         this.turnoComStatus = 0;
-        if(novoStatus == StatusEfeito.QUEIMADO){
+        if (novoStatus == StatusEfeito.QUEIMADO) {
             this.atkAtual = (int) Math.round(atkBase * (1.0 - StatusEfeito.REDUCAO_ATK_QUEIMADURA));
-        }else if (novoStatus == StatusEfeito.PARALISADO){
+        } else if (novoStatus == StatusEfeito.PARALISADO) {
             this.spdAtual = (int) Math.round(spdBase * (1.0 - StatusEfeito.REDUCAO_SPD_PARALISA));
         }
     }
@@ -85,19 +85,20 @@ public abstract class Pokesal {
         this.spdAtual = spdBase;
     }
 
-    public void receberDano(final int dano){
+    public void receberDano(final int dano) {
         this.hpAtual = Math.max(0, this.hpAtual - dano);
     }
 
-    public void curar(final int cura){
+    public void curar(final int cura) {
         this.hpAtual = Math.min(hpMaximo, this.hpAtual + cura);
     }
 
-    public void aplicarEfeitoStatusFimTurno(){
-        if(status == StatusEfeito.NENHUM || !estaVivo()){
+    public void aplicarEfeitoStatusFimTurno() {
+        if (status == StatusEfeito.NENHUM || !estaVivo()) {
             return;
-        } turnoComStatus++;
-        if (status == StatusEfeito.QUEIMADO){
+        }
+        turnoComStatus++;
+        if (status == StatusEfeito.QUEIMADO) {
             final int dano = (int) Math.round(hpMaximo * StatusEfeito.DANO_QUEIMADURA);
             receberDano(dano);
         } else if (status == StatusEfeito.ENVENENADO) {
@@ -105,3 +106,19 @@ public abstract class Pokesal {
             receberDano(dano);
         }
     }
+
+    public void aplicarEfeitoTerrenoFimTurno(final Terreno terreno ) {
+        if(terreno == Terreno.CANTEIRO_CENTRAL && tipo == tipoElemental.PLANTA && estaVivo()){
+            final int cura = (int) Math.round(hpMaximo * Terreno.CURA_CANTEIRO_CENTRAL);
+            curar(cura);
+        }
+    }
+
+    public boolean falhaTurnoParalisia(){
+        if(status != StatusEfeito.PARALISADO){
+            return false;
+        } return Math.random() < StatusEfeito.CHANCE_FALHA;
+    }
+
+
+}
