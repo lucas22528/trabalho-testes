@@ -78,4 +78,21 @@ public abstract class Pokesal {
         }
     }
 
+    public void curarStatus() {
+        this.status = StatusEfeito.NENHUM;
+        this.turnoComStatus = 0;
+        this.atkAtual = atkBase;
+        this.spdAtual = spdBase;
+    }
+
+    public void receberDano(final int dano){
+        this.hpAtual = Math.max(0, this.hpAtual - dano);
+    }
+
+    public void curar(final int cura){
+        this.hpAtual = Math.min(hpMaximo, this.hpAtual + cura);
+    }
+
+
+
 }
