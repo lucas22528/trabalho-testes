@@ -20,7 +20,7 @@ public abstract class Pokesal {
         this.hpAtual = hp;
         this.atkAtual = atk;
         this.spdAtual = spd;
-        this.status = StatusEfeitos.NENHUM;
+        this.status = StatusEfeito.NENHUM;
         this.turnoComStatus = 0;
     }
 
