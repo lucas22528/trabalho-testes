@@ -102,13 +102,13 @@ public abstract class Pokesal {
             final int dano = (int) Math.round(hpMaximo * StatusEfeito.DANO_QUEIMADURA);
             receberDano(dano);
         } else if (status == StatusEfeito.ENVENENADO) {
-            final int dano = (int) Math.round(hpMaximo * StatusEfeito.DANO_VENENO * turnoComStatus):
+            final int dano = (int) Math.round(hpMaximo * StatusEfeito.DANO_VENENO * turnoComStatus);
             receberDano(dano);
         }
     }
 
     public void aplicarEfeitoTerrenoFimTurno(final Terreno terreno ) {
-        if(terreno == Terreno.CANTEIRO_CENTRAL && tipo == tipoElemental.PLANTA && estaVivo()){
+        if(terreno == Terreno.CANTEIRO_CENTRAL && tipo == TipoElemental.PLANTA && estaVivo()){
             final int cura = (int) Math.round(hpMaximo * Terreno.CURA_CANTEIRO_CENTRAL);
             curar(cura);
         }

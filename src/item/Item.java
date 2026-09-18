@@ -1,4 +1,9 @@
 package item;
 
-public class Item {
+import Models.Pokesal;
+
+public interface Item {
+    void usar(Pokesal alvo);
+
+    String getNome();
 }

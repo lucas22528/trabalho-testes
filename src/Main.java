@@ -162,7 +162,8 @@ public final class Main {
                 if (valor >= minimo && valor <= maximo) {
                     return valor;
                 }
-            } catch (final NumberFormatException excecao) {                assert excecao != null;
+            } catch (final NumberFormatException excecao) {
+                assert excecao != null;
             }
             System.out.print("Opcao invalida, tente novamente (" + minimo + "-" + maximo + "): ");
         }
